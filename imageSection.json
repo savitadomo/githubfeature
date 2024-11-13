@@ -1,0 +1,15 @@
+{
+  "images": [
+    "iconWithBackground",
+    "logoWithoutBackground",
+    "logoWithBackground",
+    "iconWithoutBackground"
+  ],
+  "authorName": "Domo, Inc. test111",
+  "validImages": [
+    "logoWithBackground",
+    "iconWithoutBackground",
+    "iconWithBackground",
+    "logoWithoutBackground"
+  ]
+}

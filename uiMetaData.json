@@ -1,0 +1,388 @@
+{
+  "name": "Example Facebook",
+  "connectorType": "",
+  "userId": null,
+  "domoClientId": "",
+  "domoClientSecret": "",
+  "additionalInfo": "",
+  "reportLength": 3,
+  "days": 7,
+  "reports": [
+    "me",
+    "me.education",
+    "me.work"
+  ],
+  "advancedReports": null,
+  "guid": "207bdf73-ca91-46a5-9c26-42d8824a8f04",
+  "publishPrivate": true,
+  "visibilityType": {
+    "label": null,
+    "value": "communitySupported"
+  },
+  "parameters": [],
+  "commands": null,
+  "showAdvanced": true,
+  "submittedVersion": 0,
+  "submittedMajorVersion": 0,
+  "publishedVersion": 0,
+  "workbenchEnabled": false,
+  "dataProviderCreated": false,
+  "description": null,
+  "tags": null,
+  "successResponseDefinition": null,
+  "errorResponseDefinition": null,
+  "updateCode": false,
+  "requestingCustomerId": null,
+  "ownerId": null,
+  "ownerCustomerId": null,
+  "parentGuid": null,
+  "testingProfiles": [
+    {
+      "name": "TestProfile 1",
+      "value": [
+        {
+          "name": "new",
+          "type": "string",
+          "required": true,
+          "order": null,
+          "options": null,
+          "command": null,
+          "helpText": "test",
+          "showWhen": "text",
+          "value": "new",
+          "dateSelectorValue": null
+        },
+        {
+          "name": "new",
+          "type": "string",
+          "required": true,
+          "order": null,
+          "options": null,
+          "command": null,
+          "helpText": "test",
+          "showWhen": "text",
+          "value": "new",
+          "dateSelectorValue": null
+        },
+        {
+          "name": "test",
+          "type": "text",
+          "required": true,
+          "order": null,
+          "options": null,
+          "command": null,
+          "helpText": "nww",
+          "showWhen": "then",
+          "value": "test",
+          "dateSelectorValue": null
+        },
+        {
+          "name": "new",
+          "type": "string",
+          "required": true,
+          "order": null,
+          "options": null,
+          "command": null,
+          "helpText": "test",
+          "showWhen": "text",
+          "value": "new",
+          "dateSelectorValue": null
+        },
+        {
+          "name": "new",
+          "type": "string",
+          "required": true,
+          "order": null,
+          "options": null,
+          "command": null,
+          "helpText": "test",
+          "showWhen": "text",
+          "value": "new",
+          "dateSelectorValue": null
+        },
+        {
+          "name": "111",
+          "type": "text",
+          "required": true,
+          "order": null,
+          "options": null,
+          "command": null,
+          "helpText": "222",
+          "showWhen": "h111",
+          "value": null,
+          "dateSelectorValue": null
+        },
+        {
+          "name": "test",
+          "type": "text",
+          "required": true,
+          "order": null,
+          "options": null,
+          "command": null,
+          "helpText": "nww",
+          "showWhen": "then",
+          "value": "test",
+          "dateSelectorValue": null
+        },
+        {
+          "name": "test stre",
+          "type": "integer",
+          "required": null,
+          "order": null,
+          "options": null,
+          "command": null,
+          "helpText": null,
+          "showWhen": null,
+          "value": null,
+          "dateSelectorValue": null
+        },
+        {
+          "name": "date",
+          "type": "dateSelector",
+          "required": null,
+          "order": null,
+          "options": null,
+          "command": null,
+          "helpText": null,
+          "showWhen": null,
+          "value": null,
+          "dateSelectorValue": null
+        }
+      ]
+    },
+    {
+      "name": "Test 11",
+      "value": [
+        {
+          "name": "new",
+          "type": "string",
+          "required": true,
+          "order": null,
+          "options": null,
+          "command": null,
+          "helpText": "test",
+          "showWhen": "text",
+          "value": null,
+          "dateSelectorValue": null
+        },
+        {
+          "name": "new",
+          "type": "string",
+          "required": true,
+          "order": null,
+          "options": null,
+          "command": null,
+          "helpText": "test",
+          "showWhen": "text",
+          "value": null,
+          "dateSelectorValue": null
+        },
+        {
+          "name": "test",
+          "type": "text",
+          "required": true,
+          "order": null,
+          "options": null,
+          "command": null,
+          "helpText": "nww",
+          "showWhen": "then",
+          "value": null,
+          "dateSelectorValue": null
+        },
+        {
+          "name": "new",
+          "type": "string",
+          "required": true,
+          "order": null,
+          "options": null,
+          "command": null,
+          "helpText": "test",
+          "showWhen": "text",
+          "value": null,
+          "dateSelectorValue": null
+        },
+        {
+          "name": "tree",
+          "type": "discovery",
+          "required": true,
+          "order": null,
+          "options": null,
+          "command": {
+            "name": "tree",
+            "code": "// Create node using discovery.tree as the parent\r\nvar northAmerica = discovery.addNode(discovery.tree,\"North America\");\r\n  // Add Leaves\r\n  discovery.addLeaf(northAmerica,\"Canada\");\r\n  discovery.addLeaf(northAmerica,\"USA\");\r\n  discovery.addLeaf(northAmerica, \"Mexico\");\r\n\r\nvar centralAmerica = discovery.addNode(discovery.tree, \"Central America\");\r\n  discovery.addLeaf(centralAmerica,\"Panama\");\r\n  discovery.addLeaf(centralAmerica,\"Costa Rica\");\r\n\r\nvar southAmerica = discovery.addNode(discovery.tree, \"South America\");\r\n  // Nesting nodes in the southAmerica node\r\n  var west = discovery.addNode(southAmerica, \"West\");\r\n  var east = discovery.addNode(southAmerica, \"East\");\r\n  discovery.addLeaf(east,\"Argentina\");\r\n  discovery.addLeaf(west, \"Chile\");\r\n  discovery.addLeaf(west,\"Peru\");\r\n  discovery.addLeaf(east, \"Brazil\");\r\n\r\n// Remember to publish the tree\r\ndiscovery.publishTree();",
+            "type": "tree"
+          },
+          "helpText": "test",
+          "showWhen": "text",
+          "value": "Chile,Peru,West,Argentina,Brazil,East,South America",
+          "dateSelectorValue": null
+        }
+      ]
+    },
+    {
+      "name": "new",
+      "value": [
+        {
+          "name": "new",
+          "type": "string",
+          "required": true,
+          "order": null,
+          "options": null,
+          "command": null,
+          "helpText": "test",
+          "showWhen": "text",
+          "value": "new",
+          "dateSelectorValue": null
+        },
+        {
+          "name": "new",
+          "type": "string",
+          "required": true,
+          "order": null,
+          "options": null,
+          "command": null,
+          "helpText": "test",
+          "showWhen": "text",
+          "value": "new",
+          "dateSelectorValue": null
+        },
+        {
+          "name": "test",
+          "type": "text",
+          "required": true,
+          "order": null,
+          "options": null,
+          "command": null,
+          "helpText": "nww",
+          "showWhen": "then",
+          "value": "test",
+          "dateSelectorValue": null
+        },
+        {
+          "name": "new",
+          "type": "string",
+          "required": true,
+          "order": null,
+          "options": null,
+          "command": null,
+          "helpText": "test",
+          "showWhen": "text",
+          "value": "new",
+          "dateSelectorValue": null
+        },
+        {
+          "name": "tree",
+          "type": "discovery",
+          "required": true,
+          "order": null,
+          "options": null,
+          "command": {
+            "name": "tree",
+            "code": "// Create node using discovery.tree as the parent\r\nvar northAmerica = discovery.addNode(discovery.tree,\"North America\");\r\n  // Add Leaves\r\n  discovery.addLeaf(northAmerica,\"Canada\");\r\n  discovery.addLeaf(northAmerica,\"USA\");\r\n  discovery.addLeaf(northAmerica, \"Mexico\");\r\n\r\nvar centralAmerica = discovery.addNode(discovery.tree, \"Central America\");\r\n  discovery.addLeaf(centralAmerica,\"Panama\");\r\n  discovery.addLeaf(centralAmerica,\"Costa Rica\");\r\n\r\nvar southAmerica = discovery.addNode(discovery.tree, \"South America\");\r\n  // Nesting nodes in the southAmerica node\r\n  var west = discovery.addNode(southAmerica, \"West\");\r\n  var east = discovery.addNode(southAmerica, \"East\");\r\n  discovery.addLeaf(east,\"Argentina\");\r\n  discovery.addLeaf(west, \"Chile\");\r\n  discovery.addLeaf(west,\"Peru\");\r\n  discovery.addLeaf(east, \"Brazil\");\r\n\r\n// Remember to publish the tree\r\ndiscovery.publishTree();",
+            "type": "tree"
+          },
+          "helpText": "test",
+          "showWhen": "text",
+          "value": "Chile,Peru,West,Argentina,Brazil,East,South America",
+          "dateSelectorValue": null
+        }
+      ]
+    },
+    {
+      "name": "TProfile  123",
+      "value": [
+        {
+          "name": "test",
+          "type": "string",
+          "required": true,
+          "order": 1,
+          "options": [],
+          "command": null,
+          "helpText": "test",
+          "showWhen": "new1",
+          "value": "new",
+          "dateSelectorValue": null
+        },
+        {
+          "name": "lenovo",
+          "type": "integer",
+          "required": false,
+          "order": 1,
+          "options": [],
+          "command": null,
+          "helpText": "new",
+          "showWhen": "then",
+          "value": "2",
+          "dateSelectorValue": null
+        },
+        {
+          "name": "Sony",
+          "type": "text",
+          "required": false,
+          "order": 1,
+          "options": [],
+          "command": null,
+          "helpText": null,
+          "showWhen": "",
+          "value": "ok",
+          "dateSelectorValue": null
+        },
+        {
+          "name": "date",
+          "type": "dateSelector",
+          "required": false,
+          "order": 1,
+          "options": [],
+          "command": null,
+          "helpText": null,
+          "showWhen": "",
+          "value": null,
+          "dateSelectorValue": {
+            "date": "specific",
+            "dateFrom": "specific",
+            "dateFromOffset": 0,
+            "dateFromPicker": "2023-12-13",
+            "dateOffset": 0,
+            "datePicker": "2023-12-05",
+            "dateTo": "specific",
+            "dateToOffset": 0,
+            "dateToPicker": "2023-12-05",
+            "dateType": "date_range",
+            "period": "",
+            "timePeriod": "",
+            "weekStartDay": ""
+          }
+        },
+        {
+          "name": "lenovo",
+          "type": "integer",
+          "required": false,
+          "order": 1,
+          "options": [],
+          "command": null,
+          "helpText": "new",
+          "showWhen": "then",
+          "value": "2",
+          "dateSelectorValue": null
+        },
+        {
+          "name": "tree",
+          "type": "discovery",
+          "required": false,
+          "order": 1,
+          "options": [],
+          "command": {
+            "name": "",
+            "code": "// Create node using discovery.tree as the parent\r\nvar northAmerica = discovery.addNode(discovery.tree,\"North America\");\r\n  // Add Leaves\r\n  discovery.addLeaf(northAmerica,\"Canada\");\r\n  discovery.addLeaf(northAmerica,\"USA\");\r\n  discovery.addLeaf(northAmerica, \"Mexico\");\r\n\r\nvar centralAmerica = discovery.addNode(discovery.tree, \"Central America\");\r\n  discovery.addLeaf(centralAmerica,\"Panama\");\r\n  discovery.addLeaf(centralAmerica,\"Costa Rica\");\r\n\r\nvar southAmerica = discovery.addNode(discovery.tree, \"South America\");\r\n  // Nesting nodes in the southAmerica node\r\n  var west = discovery.addNode(southAmerica, \"West\");\r\n  var east = discovery.addNode(southAmerica, \"East\");\r\n  discovery.addLeaf(east,\"Argentina\");\r\n  discovery.addLeaf(west, \"Chile\");\r\n  discovery.addLeaf(west,\"Peru\");\r\n  discovery.addLeaf(east, \"Brazil\");\r\n\r\n// Remember to publish the tree\r\ndiscovery.publishTree();",
+            "type": "tree"
+          },
+          "helpText": null,
+          "showWhen": "",
+          "value": "Chile,Peru,West,Argentina,Brazil,East,South America",
+          "dateSelectorValue": null
+        }
+      ]
+    }
+  ],
+  "visible": true
+}

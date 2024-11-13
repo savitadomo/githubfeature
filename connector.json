@@ -1,0 +1,432 @@
+{
+  "images": [
+    "iconWithBackground",
+    "logoWithoutBackground",
+    "logoWithBackground",
+    "iconWithoutBackground"
+  ],
+  "name": "Example Facebook",
+  "connectorType": "",
+  "type": "new",
+  "authCodeText": "//Note: You will need to obtain your own client key and client secret.\n//Please see https://developers.facebook.com/docs/facebook-login for more information\n\nDOMO.log('metadata.account.code: ' + metadata.account.code);\nDOMO.log('metadata.account.access_token: ' + metadata.account.access_token);\n\nhttprequest.addHeader('Authorization', 'Bearer ' +  metadata.account.access_token);\n\nvar res = httprequest.get('https://graph.facebook.com/v2.10/me');\n\nDOMO.log('res: ' + res);\n\nif(res.indexOf('id') > 0){auth.authenticationSuccess();}\nelse{auth.authenicationFailed('Your oauth token has expired.');}",
+  "userName": "",
+  "password": "",
+  "apiKey": "",
+  "clientKey": "",
+  "clientSecret": "",
+  "userId": null,
+  "customAccountFields": [
+    {
+      "label": null,
+      "value": null,
+      "type": null
+    }
+  ],
+  "domoClientId": "",
+  "domoClientSecret": "",
+  "authorizationURL": "https://www.facebook.com/dialog/oauth",
+  "accessTokenURL": "https://graph.facebook.com/oauth/access_token",
+  "scope": "email,read_friendlists,user_posts,manage_pages,read_insights",
+  "additionalParameters": "",
+  "oauthUserName": null,
+  "oauthPassword": null,
+  "additionalInfo": "",
+  "reportLength": 3,
+  "days": 7,
+  "processData": "DOMO.log(' metadata.account.access_token: ' + metadata.account.access_token);\n\nhttprequest.addHeader('Authorization', 'Bearer ' +  metadata.account.access_token);\n\nvar res = httprequest.get('https://graph.facebook.com/v2.10/me?fields=first_name,last_name,about,location,education,work');\n\nDOMO.log('res: ' + res);\nvar me = JSON.parse(res);\n\nDOMO.log('metadata.reportname: ' +  metadata.report);\n\nif(metadata.report == 'me'){\n\n    datagrid.addColumn('first_name', datagrid.DATA_TYPE_STRING);\n    datagrid.addColumn('last_name', datagrid.DATA_TYPE_STRING);\n    datagrid.addColumn('locale', datagrid.DATA_TYPE_STRING);\n    datagrid.addColumn('about', datagrid.DATA_TYPE_STRING);\n\n    datagrid.addCell(me.first_name);\n    datagrid.addCell(me.last_name);\n    datagrid.addCell(me.location.name);\n    datagrid.addCell(me.about);\n\n    datagrid.endRow();\n\n}\nelse if(metadata.report == 'me.education'){\n\n    datagrid.addColumn('school', datagrid.DATA_TYPE_STRING);\n    datagrid.addColumn('type', datagrid.DATA_TYPE_STRING);\n    datagrid.addColumn('year', datagrid.DATA_TYPE_DOUBLE);\n    datagrid.addColumn('concentration', datagrid.DATA_TYPE_STRING);\n\n    var data = me.education;\n\n    DOMO.log('data: ' + JSON.stringify(data));\n\n    for(var i = 0; i < data.length; i++) {\n\n        var obj = data[i];\n\n        datagrid.addCell(obj.school.name);\n        datagrid.addCell(obj.type);\n        if(typeof obj.year !== 'undefined') datagrid.addCell(obj.year.name);\n        else datagrid.addCell(\"\");\n\n        var concentration = obj['concentration'];\n\n        DOMO.log('concentration: ' + JSON.stringify(concentration));\n\n        if(concentration != null)datagrid.addCell(concentration[0].name);\n        else datagrid.addCell(\"\");\n\n        datagrid.endRow();\n\n    }\n\n}\nelse if(metadata.report == 'me.work'){\n\n    datagrid.addColumn('employer', datagrid.DATA_TYPE_STRING);\n    datagrid.addColumn('location', datagrid.DATA_TYPE_STRING);\n    datagrid.addColumn('start_date', datagrid.DATA_TYPE_DATETIME);\n\n    var data = me.work;\n    for(var i = 0; i < data.length; i++) {\n\n        var obj = data[i];\n\n        datagrid.addCell(obj.employer.name);\n        if(typeof obj.location !== 'undefined') datagrid.addCell(obj.location.name);\n        else datagrid.addCell(\"\");\n        datagrid.addCell(obj.start_date);\n\n        datagrid.endRow();\n\n    }\n\n}\n",
+  "reports": [
+    "me",
+    "me.education",
+    "me.work"
+  ],
+  "advancedReports": null,
+  "guid": "207bdf73-ca91-46a5-9c26-42d8824a8f04",
+  "authorName": "Domo, Inc. test111",
+  "accesstokenMethod": "GET",
+  "tokenAddlParams": null,
+  "publishPrivate": true,
+  "visibilityType": {
+    "label": null,
+    "value": "communitySupported"
+  },
+  "parameters": [],
+  "commands": null,
+  "showAdvanced": true,
+  "submittedVersion": 0,
+  "submittedMajorVersion": 0,
+  "publishedVersion": 0,
+  "workbenchEnabled": false,
+  "dataProviderCreated": false,
+  "description": null,
+  "tags": null,
+  "successResponseDefinition": null,
+  "errorResponseDefinition": null,
+  "updateCode": false,
+  "requestingCustomerId": null,
+  "ownerId": null,
+  "ownerCustomerId": null,
+  "parentGuid": null,
+  "testingProfiles": [
+    {
+      "name": "TestProfile 1",
+      "value": [
+        {
+          "name": "new",
+          "type": "string",
+          "required": true,
+          "order": null,
+          "options": null,
+          "command": null,
+          "helpText": "test",
+          "showWhen": "text",
+          "value": "new",
+          "dateSelectorValue": null
+        },
+        {
+          "name": "new",
+          "type": "string",
+          "required": true,
+          "order": null,
+          "options": null,
+          "command": null,
+          "helpText": "test",
+          "showWhen": "text",
+          "value": "new",
+          "dateSelectorValue": null
+        },
+        {
+          "name": "test",
+          "type": "text",
+          "required": true,
+          "order": null,
+          "options": null,
+          "command": null,
+          "helpText": "nww",
+          "showWhen": "then",
+          "value": "test",
+          "dateSelectorValue": null
+        },
+        {
+          "name": "new",
+          "type": "string",
+          "required": true,
+          "order": null,
+          "options": null,
+          "command": null,
+          "helpText": "test",
+          "showWhen": "text",
+          "value": "new",
+          "dateSelectorValue": null
+        },
+        {
+          "name": "new",
+          "type": "string",
+          "required": true,
+          "order": null,
+          "options": null,
+          "command": null,
+          "helpText": "test",
+          "showWhen": "text",
+          "value": "new",
+          "dateSelectorValue": null
+        },
+        {
+          "name": "111",
+          "type": "text",
+          "required": true,
+          "order": null,
+          "options": null,
+          "command": null,
+          "helpText": "222",
+          "showWhen": "h111",
+          "value": null,
+          "dateSelectorValue": null
+        },
+        {
+          "name": "test",
+          "type": "text",
+          "required": true,
+          "order": null,
+          "options": null,
+          "command": null,
+          "helpText": "nww",
+          "showWhen": "then",
+          "value": "test",
+          "dateSelectorValue": null
+        },
+        {
+          "name": "test stre",
+          "type": "integer",
+          "required": null,
+          "order": null,
+          "options": null,
+          "command": null,
+          "helpText": null,
+          "showWhen": null,
+          "value": null,
+          "dateSelectorValue": null
+        },
+        {
+          "name": "date",
+          "type": "dateSelector",
+          "required": null,
+          "order": null,
+          "options": null,
+          "command": null,
+          "helpText": null,
+          "showWhen": null,
+          "value": null,
+          "dateSelectorValue": null
+        }
+      ]
+    },
+    {
+      "name": "Test 11",
+      "value": [
+        {
+          "name": "new",
+          "type": "string",
+          "required": true,
+          "order": null,
+          "options": null,
+          "command": null,
+          "helpText": "test",
+          "showWhen": "text",
+          "value": null,
+          "dateSelectorValue": null
+        },
+        {
+          "name": "new",
+          "type": "string",
+          "required": true,
+          "order": null,
+          "options": null,
+          "command": null,
+          "helpText": "test",
+          "showWhen": "text",
+          "value": null,
+          "dateSelectorValue": null
+        },
+        {
+          "name": "test",
+          "type": "text",
+          "required": true,
+          "order": null,
+          "options": null,
+          "command": null,
+          "helpText": "nww",
+          "showWhen": "then",
+          "value": null,
+          "dateSelectorValue": null
+        },
+        {
+          "name": "new",
+          "type": "string",
+          "required": true,
+          "order": null,
+          "options": null,
+          "command": null,
+          "helpText": "test",
+          "showWhen": "text",
+          "value": null,
+          "dateSelectorValue": null
+        },
+        {
+          "name": "tree",
+          "type": "discovery",
+          "required": true,
+          "order": null,
+          "options": null,
+          "command": {
+            "name": "tree",
+            "code": "// Create node using discovery.tree as the parent\r\nvar northAmerica = discovery.addNode(discovery.tree,\"North America\");\r\n  // Add Leaves\r\n  discovery.addLeaf(northAmerica,\"Canada\");\r\n  discovery.addLeaf(northAmerica,\"USA\");\r\n  discovery.addLeaf(northAmerica, \"Mexico\");\r\n\r\nvar centralAmerica = discovery.addNode(discovery.tree, \"Central America\");\r\n  discovery.addLeaf(centralAmerica,\"Panama\");\r\n  discovery.addLeaf(centralAmerica,\"Costa Rica\");\r\n\r\nvar southAmerica = discovery.addNode(discovery.tree, \"South America\");\r\n  // Nesting nodes in the southAmerica node\r\n  var west = discovery.addNode(southAmerica, \"West\");\r\n  var east = discovery.addNode(southAmerica, \"East\");\r\n  discovery.addLeaf(east,\"Argentina\");\r\n  discovery.addLeaf(west, \"Chile\");\r\n  discovery.addLeaf(west,\"Peru\");\r\n  discovery.addLeaf(east, \"Brazil\");\r\n\r\n// Remember to publish the tree\r\ndiscovery.publishTree();",
+            "type": "tree"
+          },
+          "helpText": "test",
+          "showWhen": "text",
+          "value": "Chile,Peru,West,Argentina,Brazil,East,South America",
+          "dateSelectorValue": null
+        }
+      ]
+    },
+    {
+      "name": "new",
+      "value": [
+        {
+          "name": "new",
+          "type": "string",
+          "required": true,
+          "order": null,
+          "options": null,
+          "command": null,
+          "helpText": "test",
+          "showWhen": "text",
+          "value": "new",
+          "dateSelectorValue": null
+        },
+        {
+          "name": "new",
+          "type": "string",
+          "required": true,
+          "order": null,
+          "options": null,
+          "command": null,
+          "helpText": "test",
+          "showWhen": "text",
+          "value": "new",
+          "dateSelectorValue": null
+        },
+        {
+          "name": "test",
+          "type": "text",
+          "required": true,
+          "order": null,
+          "options": null,
+          "command": null,
+          "helpText": "nww",
+          "showWhen": "then",
+          "value": "test",
+          "dateSelectorValue": null
+        },
+        {
+          "name": "new",
+          "type": "string",
+          "required": true,
+          "order": null,
+          "options": null,
+          "command": null,
+          "helpText": "test",
+          "showWhen": "text",
+          "value": "new",
+          "dateSelectorValue": null
+        },
+        {
+          "name": "tree",
+          "type": "discovery",
+          "required": true,
+          "order": null,
+          "options": null,
+          "command": {
+            "name": "tree",
+            "code": "// Create node using discovery.tree as the parent\r\nvar northAmerica = discovery.addNode(discovery.tree,\"North America\");\r\n  // Add Leaves\r\n  discovery.addLeaf(northAmerica,\"Canada\");\r\n  discovery.addLeaf(northAmerica,\"USA\");\r\n  discovery.addLeaf(northAmerica, \"Mexico\");\r\n\r\nvar centralAmerica = discovery.addNode(discovery.tree, \"Central America\");\r\n  discovery.addLeaf(centralAmerica,\"Panama\");\r\n  discovery.addLeaf(centralAmerica,\"Costa Rica\");\r\n\r\nvar southAmerica = discovery.addNode(discovery.tree, \"South America\");\r\n  // Nesting nodes in the southAmerica node\r\n  var west = discovery.addNode(southAmerica, \"West\");\r\n  var east = discovery.addNode(southAmerica, \"East\");\r\n  discovery.addLeaf(east,\"Argentina\");\r\n  discovery.addLeaf(west, \"Chile\");\r\n  discovery.addLeaf(west,\"Peru\");\r\n  discovery.addLeaf(east, \"Brazil\");\r\n\r\n// Remember to publish the tree\r\ndiscovery.publishTree();",
+            "type": "tree"
+          },
+          "helpText": "test",
+          "showWhen": "text",
+          "value": "Chile,Peru,West,Argentina,Brazil,East,South America",
+          "dateSelectorValue": null
+        }
+      ]
+    },
+    {
+      "name": "TProfile  123",
+      "value": [
+        {
+          "name": "test",
+          "type": "string",
+          "required": true,
+          "order": 1,
+          "options": [],
+          "command": null,
+          "helpText": "test",
+          "showWhen": "new1",
+          "value": "new",
+          "dateSelectorValue": null
+        },
+        {
+          "name": "lenovo",
+          "type": "integer",
+          "required": false,
+          "order": 1,
+          "options": [],
+          "command": null,
+          "helpText": "new",
+          "showWhen": "then",
+          "value": "2",
+          "dateSelectorValue": null
+        },
+        {
+          "name": "Sony",
+          "type": "text",
+          "required": false,
+          "order": 1,
+          "options": [],
+          "command": null,
+          "helpText": null,
+          "showWhen": "",
+          "value": "ok",
+          "dateSelectorValue": null
+        },
+        {
+          "name": "date",
+          "type": "dateSelector",
+          "required": false,
+          "order": 1,
+          "options": [],
+          "command": null,
+          "helpText": null,
+          "showWhen": "",
+          "value": null,
+          "dateSelectorValue": {
+            "date": "specific",
+            "dateFrom": "specific",
+            "dateFromOffset": 0,
+            "dateFromPicker": "2023-12-13",
+            "dateOffset": 0,
+            "datePicker": "2023-12-05",
+            "dateTo": "specific",
+            "dateToOffset": 0,
+            "dateToPicker": "2023-12-05",
+            "dateType": "date_range",
+            "period": "",
+            "timePeriod": "",
+            "weekStartDay": ""
+          }
+        },
+        {
+          "name": "lenovo",
+          "type": "integer",
+          "required": false,
+          "order": 1,
+          "options": [],
+          "command": null,
+          "helpText": "new",
+          "showWhen": "then",
+          "value": "2",
+          "dateSelectorValue": null
+        },
+        {
+          "name": "tree",
+          "type": "discovery",
+          "required": false,
+          "order": 1,
+          "options": [],
+          "command": {
+            "name": "",
+            "code": "// Create node using discovery.tree as the parent\r\nvar northAmerica = discovery.addNode(discovery.tree,\"North America\");\r\n  // Add Leaves\r\n  discovery.addLeaf(northAmerica,\"Canada\");\r\n  discovery.addLeaf(northAmerica,\"USA\");\r\n  discovery.addLeaf(northAmerica, \"Mexico\");\r\n\r\nvar centralAmerica = discovery.addNode(discovery.tree, \"Central America\");\r\n  discovery.addLeaf(centralAmerica,\"Panama\");\r\n  discovery.addLeaf(centralAmerica,\"Costa Rica\");\r\n\r\nvar southAmerica = discovery.addNode(discovery.tree, \"South America\");\r\n  // Nesting nodes in the southAmerica node\r\n  var west = discovery.addNode(southAmerica, \"West\");\r\n  var east = discovery.addNode(southAmerica, \"East\");\r\n  discovery.addLeaf(east,\"Argentina\");\r\n  discovery.addLeaf(west, \"Chile\");\r\n  discovery.addLeaf(west,\"Peru\");\r\n  discovery.addLeaf(east, \"Brazil\");\r\n\r\n// Remember to publish the tree\r\ndiscovery.publishTree();",
+            "type": "tree"
+          },
+          "helpText": null,
+          "showWhen": "",
+          "value": "Chile,Peru,West,Argentina,Brazil,East,South America",
+          "dateSelectorValue": null
+        }
+      ]
+    }
+  ],
+  "pacerLimits": null,
+  "enableForAppstore": false,
+  "testingValue": null,
+  "libraries": null,
+  "transferUserId": null,
+  "transferCustomerId": null,
+  "stakeholders": null,
+  "repository": null,
+  "visible": true,
+  "validImages": [
+    "logoWithBackground",
+    "iconWithoutBackground",
+    "iconWithBackground",
+    "logoWithoutBackground"
+  ]
+}
